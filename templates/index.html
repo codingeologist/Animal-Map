@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--- Basic Webpage needs
+        ================================================== -->
+        <meta charset="utf-8"/>
+        <meta name="description" content="Animal Sightings Map"/>
+        <meta name="keywords" content="Animal Sightings Map"/>
+        <!--- Mobile needs
+        ================================================== -->    
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <!--- Stylesheet
+        ================================================== -->
+       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css')}}"/>
+       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono"/>
+        <!--- Scripts
+        ================================================== -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://use.fontawesome.com/releases/v5.8.2/css/all.css"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+       <!--- Favicon Image
+        ================================================== -->
+       <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico')}}">
+       <title>ANIMAL SIGHTINGS</title>
+    </head>
+    <script>
+        function showOverlay() {
+            document.getElementById("overlay").style.opacity = 1;
+            document.getElementById("overlay").style.visibility = "visible";
+        }
+    </script>   
+    <body>
+        <!-- Parent -->
+        <div id="parent">
+            <!-- Header Bar -->
+            <div id="header" class="header">
+                <h1>Animal Sightings</h1>
+                <form method="POST">
+                    <label for ="Postcode">Postcode Lookup</label><br>
+                    <input type="text" id="Postcode" name="Postcode"/><br>
+                    <button type="submit" class="btn btn-primary btn-lg" onclick=showOverlay()>Lookup Postcode</button>
+                </form>              
+            </div>
+            <!-- Map -->
+            <div id="map">
+                {{map | safe}}
+            </div>
+            <!--Loading-->
+            <div id="overlay">
+                <div id="loader"></div>
+            </div>
+        </div>
+    </body>
+</html>
