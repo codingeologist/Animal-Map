@@ -10,3 +10,10 @@ TO DO:
 
 - Implement Random postcode funciton.
 - Get all taxonomic sightings within a postcode.
+
+```bash
+python3 -m venv ./venv
+source ./venv/bin/activate
+pip3 install -r requirements.txt
+python3 app.py
+```
