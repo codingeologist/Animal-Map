@@ -60,8 +60,13 @@ body {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 #overlay:target {
@@ -76,6 +81,11 @@ body {
   color: white;
   font-size: medium;
   background-color: #2da0e2 !important;
+}
+
+.example-postcodes {
+  margin: 0 auto;
+  text-align: center;
 }
 
 .map {

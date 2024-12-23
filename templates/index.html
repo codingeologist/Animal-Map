@@ -1,55 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <!--- Basic Webpage needs
+
+<head>
+    <!--- Basic Webpage needs
         ================================================== -->
-        <meta charset="utf-8"/>
-        <meta name="description" content="Animal Sightings Map"/>
-        <meta name="keywords" content="Animal Sightings Map"/>
-        <!--- Mobile needs
-        ================================================== -->    
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-        <!--- Stylesheet
+    <meta charset="utf-8" />
+    <meta name="description" content="Animal Sightings Map" />
+    <meta name="keywords" content="Animal Sightings Map" />
+    <!--- Mobile needs
         ================================================== -->
-       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css')}}"/>
-       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono"/>
-        <!--- Scripts
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <!--- Stylesheet
         ================================================== -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src="https://use.fontawesome.com/releases/v5.8.2/css/all.css"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-       <!--- Favicon Image
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css')}}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono" />
+    <!--- Scripts
         ================================================== -->
-       <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico')}}">
-       <title>ANIMAL SIGHTINGS</title>
-    </head>
-    <script>
-        function showOverlay() {
-            document.getElementById("overlay").style.opacity = 1;
-            document.getElementById("overlay").style.visibility = "visible";
-        }
-    </script>   
-    <body>
-        <!-- Parent -->
-        <div id="parent">
-            <!-- Header Bar -->
-            <div id="header" class="header">
-                <h1>Animal Sightings</h1>
-                <form method="POST">
-                    <label for ="Postcode">Postcode Lookup</label><br>
-                    <input type="text" id="Postcode" name="Postcode"/><br>
-                    <button type="submit" class="btn btn-primary btn-lg" onclick=showOverlay()>Lookup Postcode</button>
-                </form>              
-            </div>
-            <!-- Map -->
-            <div id="map">
-                {{map | safe}}
-            </div>
-            <!--Loading-->
-            <div id="overlay">
-                <div id="loader"></div>
-            </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.8.2/css/all.css"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--- Favicon Image
+        ================================================== -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico')}}">
+    <title>ANIMAL SIGHTINGS</title>
+</head>
+<script>
+    function showOverlay() {
+        document.getElementById("overlay").style.opacity = 1;
+        document.getElementById("overlay").style.visibility = "visible";
+    }
+</script>
+
+<body>
+    <!-- Parent -->
+    <div id="parent">
+        <!-- Header Bar -->
+        <div id="header" class="header">
+            <h1>Animal Sightings</h1>
+            <form method="POST">
+                <label for="Postcode Lookup">Postcode Lookup</label><br>
+                <input type="text" id="Postcode" name="Postcode" /><br>
+                <button type="submit" class="btn btn-primary btn-lg" name="Postcode Lookup" value="Lookup Postcode"
+                    onclick=showOverlay()>Lookup Postcode</button>
+            </form>
+            <p>Try these UK postcodes to view data from different locations:</p>
+            <table class="example-postcodes">
+                <tr>
+                    <th>Postcode</th>
+                    <th>Location</th>
+                </tr>
+                <tr>
+                    <td>PH26 3HG</td>
+                    <td>Cairngorms National Park</td>
+                </tr>
+                <tr>
+                    <td>CA11 0PU</td>
+                    <td>Hellvellyn Peak Lake District</td>
+                </tr>
+                <tr>
+                    <td>LL48 6LF</td>
+                    <td>Snowdonia National Park</td>
+                </tr>
+                <tr>
+                    <td>GU29 9DH</td>
+                    <td>South Downs National Park</td>
+                </tr>
+                <tr>
+                    <td>SO43 7BJ</td>
+                    <td>New Forest National Park</td>
+                </tr>
+            </table>
         </div>
-    </body>
+        <!-- Map -->
+        <div id="map">
+            {{map | safe}}
+        </div>
+        <!--Loading-->
+        <div id="overlay">
+            <div id="loader"></div>
+        </div>
+    </div>
+</body>
+
 </html>
